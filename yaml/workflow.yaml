@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: hello-world-workflow
+  namespace: test7
+spec:
+  serviceAccountName: run-workflow  # Specify the ServiceAccount
+  entrypoint: hello-world
+  templates:
+    - name: hello-world
+      container:
+        image: alpine:3.14
+        command: [sh, -c]
+        args: ["echo 'Hello, World!'"]
